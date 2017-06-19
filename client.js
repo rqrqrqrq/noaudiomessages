@@ -1,3 +1,7 @@
+const INPUTS = {
+  test: 87 /* W */,
+};
+
 const createCanvasDOM = () => {
   const canvas = document.createElement('canvas');
 
@@ -20,7 +24,17 @@ const sharedState = {
   flag: false,
 };
 
-setInterval(() => (sharedState.flag = !sharedState.flag), 1000);
+document.addEventListener('keydown', e => {
+  if (e.keyCode === INPUTS.test) {
+    sharedState.flag = true;
+  }
+});
+
+document.addEventListener('keyup', e => {
+  if (e.keyCode === INPUTS.test) {
+    sharedState.flag = false;
+  }
+});
 
 const helloworld = ctx => {
   ctx.font = '30px Arial';
