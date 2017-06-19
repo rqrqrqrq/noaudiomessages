@@ -6,11 +6,11 @@
   "author": "rqrqrqrq <rtdfh@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "babel-node ."
+    "start": "nodemon server --exec babel-node"
   },
   "dependencies": {
-    "axios": "^0.16.2",
     "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.5.2"
+    "babel-preset-env": "^1.5.2",
+    "express": "^4.15.3"
   }
 }
