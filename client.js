@@ -67,6 +67,8 @@ const render = (ctx, timestamp) => {
 
 const init = () => {
   render(createCanvasDOM(), new Date());
+
+  document.removeEventListener('click', init);
 };
 
-init();
+document.addEventListener('click', init);
