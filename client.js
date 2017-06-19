@@ -41,16 +41,32 @@ const helloworld = ctx => {
   ctx[sharedState.flag ? 'fillText' : 'strokeText']('Hello World', 10, 50);
 };
 
-const render = ctx => {
+const showFps = (ctx, deltaTime) => {
+  const fps = Math.round(1000 / deltaTime);
+
+  ctx.font = '12px Arial';
+  ctx.fillText(fps.toString(10), 5, 10);
+};
+
+const renderrer = (ctx, deltaTime) => {
+  helloworld(ctx);
+  showFps(ctx, deltaTime);
+};
+
+const render = (ctx, timestamp) => {
+  const currentTime = new Date();
+
+  const deltaTime = currentTime - timestamp;
+
   clear(ctx);
 
-  helloworld(ctx);
+  renderrer(ctx, deltaTime);
 
-  requestAnimationFrame(() => render(ctx));
+  requestAnimationFrame(() => render(ctx, currentTime));
 };
 
 const init = () => {
-  render(createCanvasDOM());
+  render(createCanvasDOM(), new Date());
 };
 
 init();
